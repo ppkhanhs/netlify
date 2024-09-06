@@ -1,7 +1,7 @@
 /* Đặt nền là một ảnh động GIF */
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif'); /* URL của ảnh động online */
+    background-image: url('https://usagif.com/wp-content/uploads/gif/outerspace-58.gif'); /* URL của ảnh động online */
     background-size: cover;
     background-position: center;
     margin: 0;

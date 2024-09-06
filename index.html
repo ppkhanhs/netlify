@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chương trình Tìm kiếm</title>
+    <title>Tìm kiếm</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Chương trình Tìm kiếm</h1>
-        
-        <label for="numberArray">Nhập dãy số (cách nhau bằng dấu phẩy):</label>
-        <input type="text" id="numberArray" placeholder="Ví dụ: 1, 2, 3, 4, 5">
-
-        <label for="searchValue">Nhập giá trị tìm kiếm:</label>
-        <input type="number" id="searchValue" placeholder="Nhập giá trị...">
-
-        <label for="searchMethod">Chọn phương pháp tìm kiếm:</label>
-        <select id="searchMethod">
-            <option value="linear">Tìm kiếm tuyến tính</option>
-            <option value="binary">Tìm kiếm nhị phân</option>
-        </select>
-
-        <button id="searchButton">Tìm kiếm</button>
-
-        <p id="searchResult"></p>
-        <h2>Bước tìm kiếm:</h2>
-        <pre id="searchSteps"></pre>
+        <h1>Tìm kiếm số</h1>
+        <div class="input-section">
+            <label for="numbers">Nhập dãy số (cách nhau bằng dấu phẩy):</label>
+            <input type="text" id="numbers" placeholder="Ví dụ: 1, 3, 5, 7, 9">
+        </div>
+        <div class="input-section">
+            <label for="searchNumber">Nhập số cần tìm:</label>
+            <input type="number" id="searchNumber" placeholder="Số cần tìm">
+        </div>
+        <div class="button-section">
+            <button onclick="linearSearch()">Tìm kiếm tuyến tính</button>
+            <button onclick="binarySearch()">Tìm kiếm nhị phân</button>
+        </div>
+        <div class="result-section">
+            <p id="result"></p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

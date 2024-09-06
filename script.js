@@ -1,39 +1,58 @@
-function bubbleSort(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                let temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
+function linearSearch(array, target) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === target) {
+            return i;
         }
     }
-    return arr;
+    return -1;
 }
 
-function insertionSort(arr) {
-    for (let i = 1; i < arr.length; i++) {
-        let key = arr[i];
-        let j = i - 1;
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j--;
+// Hàm tìm kiếm nhị phân
+function binarySearch(array, target) {
+    let left = 0;
+    let right = array.length - 1;
+
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if (array[mid] === target) {
+            return mid;
+        } else if (array[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
         }
-        arr[j + 1] = key;
     }
-    return arr;
+    return -1;
 }
 
-function sortArray() {
-    let algorithm = document.getElementById("algorithm").value;
-    let inputArray = document.getElementById("array-input").value.split(',').map(Number); // Get and convert the input
+// Hàm xử lý tìm kiếm
+function search() {
+    const arrayString = document.getElementById('numberArray').value;
+    const searchValue = parseInt(document.getElementById('searchValue').value);
+    const searchMethod = document.getElementById('searchMethod').value;
 
-    let sortedArray;
-    if (algorithm === "bubble") {
-        sortedArray = bubbleSort([...inputArray]);
-    } else if (algorithm === "insertion") {
-        sortedArray = insertionSort([...inputArray]);
+    // Chuyển đổi dãy số từ chuỗi thành mảng số
+    const array = arrayString.split(',').map(num => parseInt(num.trim())).sort((a, b) => a - b);
+    
+    let index = -1;
+
+    if (isNaN(searchValue)) {
+        document.getElementById('searchResult').textContent = 'Vui lòng nhập giá trị tìm kiếm hợp lệ.';
+        return;
     }
 
-    document.getElementById("sorted-array").textContent = sortedArray.join(", ");
+    if (searchMethod === 'linear') {
+        index = linearSearch(array, searchValue);
+    } else if (searchMethod === 'binary') {
+        index = binarySearch(array, searchValue);
+    }
+
+    if (index !== -1) {
+        document.getElementById('searchResult').textContent = `Giá trị ${searchValue} được tìm thấy tại chỉ số ${index}.`;
+    } else {
+        document.getElementById('searchResult').textContent = `Giá trị ${searchValue} không được tìm thấy.`;
+    }
 }
+
+// Lắng nghe sự kiện nhấn nút tìm kiếm
+document.getElementById('searchButton').addEventListener('click', search);

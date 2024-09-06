@@ -5,9 +5,9 @@ function sortArray(arr) {
 
 // Tìm kiếm tuyến tính
 function linearSearch(arr, target) {
-    let steps = "Steps: ";
+    let steps = "Steps: <br>";
     for (let i = 0; i < arr.length; i++) {
-        steps += `Step ${i + 1}: so sánh ${arr[i]} với ${target}<br>`;
+        steps += `Bước ${i + 1}: so sánh ${arr[i]} với ${target}<br>`;
         if (arr[i] == target) {
             return { found: true, index: i, steps: steps };
         }
@@ -17,14 +17,14 @@ function linearSearch(arr, target) {
 
 // Tìm kiếm nhị phân (cần mảng đã sắp xếp)
 function binarySearch(arr, target) {
-    let steps = "Steps: ";
+    let steps = "Steps: <br>";
     let left = 0;
     let right = arr.length - 1;
     let stepCount = 1;
 
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
-        steps += `Step ${stepCount}: so sánh ${arr[mid]} với ${target}<br>`;
+        steps += `Bước ${stepCount}: so sánh ${arr[mid]} với ${target}<br>`;
         stepCount++;
 
         if (arr[mid] == target) {

@@ -51,3 +51,11 @@ button:hover {
     font-size: 18px;
     font-weight: bold;
 }
+
+#searchSteps {
+    white-space: pre-wrap; /* Giữ khoảng trắng và xuống dòng */
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

@@ -1,19 +1,15 @@
-/* Đặt nền là một ảnh động GIF */
-body {
-    font-family: 'Arial', sans-serif;
-    background-image: url('https://usagif.com/wp-content/uploads/gif/outerspace-58.gif'); /* URL của ảnh động online */
-    background-size: cover;
-    background-position: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+/* Video nền */
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(50%); /* Làm tối video nền để dễ đọc chữ */
 }
 
-/* Container có độ trong suốt để thấy ảnh nền phía sau */
+/* Container có độ trong suốt để thấy video phía sau */
 .container {
     background-color: rgba(255, 255, 255, 0.8); /* Màu trắng với độ trong suốt 80% */
     padding: 40px;
@@ -31,11 +27,6 @@ h1 {
     background: linear-gradient(to right, #ff5f6d, #ffc371);
     -webkit-background-clip: text;
     color: transparent;
-}
-
-/* Các thành phần khác vẫn giữ nguyên như trước */
-label, input, button, #result, #steps {
-    /* Giữ các định dạng hiện tại */
 }
 
 /* Đặt hiệu ứng động nhẹ cho toàn bộ container khi tải */

@@ -5,7 +5,7 @@ function sortArray(arr) {
 
 // Tìm kiếm tuyến tính
 function linearSearch(arr, target) {
-    let steps = "Steps: <br>";
+    let steps = "Các bước thực hiện: <br>";
     for (let i = 0; i < arr.length; i++) {
         steps += `Bước ${i + 1}: so sánh ${arr[i]} với ${target}<br>`;
         if (arr[i] == target) {
@@ -17,7 +17,7 @@ function linearSearch(arr, target) {
 
 // Tìm kiếm nhị phân (cần mảng đã sắp xếp)
 function binarySearch(arr, target) {
-    let steps = "Steps: <br>";
+    let steps = "Các bước thực hiện: <br>";
     let left = 0;
     let right = arr.length - 1;
     let stepCount = 1;
@@ -59,7 +59,7 @@ document.getElementById('binary-search').addEventListener('click', function() {
 
     // Sắp xếp mảng
     numbers = sortArray(numbers);
-    document.getElementById('result').innerHTML = `Mảng sau khi sắp xếp tăng dần với giải thuật tìm kiếm nhị phân: [${numbers.join(', ')}]<br>`;
+    document.getElementById('result').innerHTML = `Mảng sau khi sắp xếp tăng dần với giải thuật tìm kiếm nhị phân:<br> [${numbers.join(', ')}]<br>`;
 
     const result = binarySearch(numbers, target);
 

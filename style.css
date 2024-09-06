@@ -8,13 +8,23 @@ body {
     align-items: center;
     min-height: 100vh;
 }
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(50%); /* Làm tối video nền để dễ nhìn chữ */
+}
 
+/* Container có độ trong suốt để thấy video phía sau */
 .container {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 700px;
     max-width: 90%;
     text-align: center;
 }

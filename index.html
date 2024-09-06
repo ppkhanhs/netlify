@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trương Văn Phú Khánh</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Chương trình Tìm kiếm</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Giải thuật sắp xếp</h1>
-        <select id="algorithm">
-            <option value="bubble">Bubble Sort</option>
-            <option value="insertion">Insertion Sort</option>
-        </select>
-        <br>
-        <h3>Enter Array (comma-separated)</h3>
-        <input type="text" id="array-input" placeholder="e.g. 5,3,8,4,2">
-        <button onclick="sortArray()">Sort Array</button>
+        <h1>Chương trình Tìm kiếm</h1>
+        <label for="searchValue">Nhập giá trị tìm kiếm:</label>
+        <input type="number" id="searchValue" placeholder="Nhập giá trị...">
 
-        <h3>Sorted Array</h3>
-        <p id="sorted-array"></p>
+        <label for="searchMethod">Chọn phương pháp tìm kiếm:</label>
+        <select id="searchMethod">
+            <option value="linear">Tìm kiếm tuyến tính</option>
+            <option value="binary">Tìm kiếm nhị phân</option>
+        </select>
+
+        <button id="searchButton">Tìm kiếm</button>
+
+        <p id="searchResult"></p>
     </div>
     <script src="script.js"></script>
 </body>

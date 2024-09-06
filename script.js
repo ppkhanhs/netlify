@@ -7,7 +7,7 @@ function sortArray(arr) {
 function linearSearch(arr, target) {
     let steps = "Steps: ";
     for (let i = 0; i < arr.length; i++) {
-        steps += `Step ${i + 1}: Compare ${arr[i]} with ${target}<br>`;
+        steps += `Step ${i + 1}: so sánh ${arr[i]} với ${target}<br>`;
         if (arr[i] == target) {
             return { found: true, index: i, steps: steps };
         }
@@ -24,7 +24,7 @@ function binarySearch(arr, target) {
 
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
-        steps += `Step ${stepCount}: Compare ${arr[mid]} with ${target}<br>`;
+        steps += `Step ${stepCount}: so sánh ${arr[mid]} với ${target}<br>`;
         stepCount++;
 
         if (arr[mid] == target) {
@@ -46,9 +46,9 @@ document.getElementById('linear-search').addEventListener('click', function() {
     const result = linearSearch(numbers, target);
 
     if (result.found) {
-        document.getElementById('result').innerHTML = `Linear Search: Found at index ${result.index}`;
+        document.getElementById('result').innerHTML = `Tìm kiếm tuyến tính: Tìm thấy tại chỉ số ${result.index}`;
     } else {
-        document.getElementById('result').innerHTML = 'Linear Search: Not found';
+        document.getElementById('result').innerHTML = 'Tìm kiếm tuyến tính: Không tìm thấy';
     }
     document.getElementById('steps').innerHTML = result.steps;
 });
@@ -59,14 +59,14 @@ document.getElementById('binary-search').addEventListener('click', function() {
 
     // Sắp xếp mảng
     numbers = sortArray(numbers);
-    document.getElementById('result').innerHTML = `Sorted array for Binary Search: [${numbers.join(', ')}]<br>`;
+    document.getElementById('result').innerHTML = `Mảng sau khi sắp xếp tăng dần với giải thuật tìm kiếm nhị phân: [${numbers.join(', ')}]<br>`;
 
     const result = binarySearch(numbers, target);
 
     if (result.found) {
-        document.getElementById('result').innerHTML += `Binary Search: Found at index ${result.index}`;
+        document.getElementById('result').innerHTML += `Tìm kiếm nhị phân: Tìm thấy tại chỉ số ${result.index}`;
     } else {
-        document.getElementById('result').innerHTML += 'Binary Search: Not found';
+        document.getElementById('result').innerHTML += 'Tìm kiếm nhị phân: Không tìm thấy';
     }
     document.getElementById('steps').innerHTML = result.steps;
 });

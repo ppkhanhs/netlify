@@ -15,7 +15,7 @@ body {
 
 /* Container có độ trong suốt để thấy ảnh nền phía sau */
 .container {
-    background-color: rgba(255, 255, 255, 0.8); /* Màu trắng với độ trong suốt 80% */
+    background-color: rgba(255, 255, 255, 0.3); /* Màu trắng với độ trong suốt 80% */
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);

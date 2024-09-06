@@ -1,26 +1,21 @@
+/* Đặt nền là một ảnh động GIF */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif'); /* URL của ảnh động online */
+    background-size: cover;
+    background-position: center;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-}
-#background-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-    filter: brightness(50%); /* Làm tối video nền để dễ nhìn chữ */
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Container có độ trong suốt để thấy video phía sau */
+/* Container có độ trong suốt để thấy ảnh nền phía sau */
 .container {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8); /* Màu trắng với độ trong suốt 80% */
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -29,9 +24,34 @@ body {
     text-align: center;
 }
 
+/* Các phần tử khác không thay đổi */
 h1 {
-    font-size: 32px;
+    font-size: 36px;
     margin-bottom: 30px;
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Các thành phần khác vẫn giữ nguyên như trước */
+label, input, button, #result, #steps {
+    /* Giữ các định dạng hiện tại */
+}
+
+/* Đặt hiệu ứng động nhẹ cho toàn bộ container khi tải */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 1s ease-out;
 }
 
 label {

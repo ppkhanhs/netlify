@@ -1,68 +1,36 @@
-// Hàm tìm kiếm tuyến tính
-function linearSearch(array, target) {
-    const steps = [];
-    for (let i = 0; i < array.length; i++) {
-        steps.push(`Kiểm tra chỉ số ${i}: giá trị ${array[i]}`);
-        if (array[i] === target) {
-            return { index: i, steps };
+function linearSearch() {
+    const numbers = document.getElementById('numbers').value.split(',').map(Number);
+    const searchNumber = parseInt(document.getElementById('searchNumber').value);
+    let result = 'Không tìm thấy số.';
+
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] === searchNumber) {
+            result = `Số ${searchNumber} được tìm thấy tại chỉ số ${i}.`;
+            break;
         }
     }
-    return { index: -1, steps };
+
+    document.getElementById('result').textContent = result;
 }
 
-// Hàm tìm kiếm nhị phân
-function binarySearch(array, target) {
-    const steps = [];
-    let left = 0;
-    let right = array.length - 1;
+function binarySearch() {
+    const numbers = document.getElementById('numbers').value.split(',').map(Number).sort((a, b) => a - b);
+    const searchNumber = parseInt(document.getElementById('searchNumber').value);
+    let low = 0;
+    let high = numbers.length - 1;
+    let result = 'Không tìm thấy số.';
 
-    while (left <= right) {
-        let mid = Math.floor((left + right) / 2);
-        steps.push(`Kiểm tra khoảng từ ${left} đến ${right}, chỉ số giữa ${mid}: giá trị ${array[mid]}`);
-        
-        if (array[mid] === target) {
-            return { index: mid, steps };
-        } else if (array[mid] < target) {
-            left = mid + 1;
+    while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        if (numbers[mid] === searchNumber) {
+            result = `Số ${searchNumber} được tìm thấy tại chỉ số ${mid} (sau khi sắp xếp).`;
+            break;
+        } else if (numbers[mid] < searchNumber) {
+            low = mid + 1;
         } else {
-            right = mid - 1;
+            high = mid - 1;
         }
     }
-    return { index: -1, steps };
+
+    document.getElementById('result').textContent = result;
 }
-
-// Hàm xử lý tìm kiếm
-function search() {
-    const arrayString = document.getElementById('numberArray').value;
-    const searchValue = parseInt(document.getElementById('searchValue').value);
-    const searchMethod = document.getElementById('searchMethod').value;
-
-    // Chuyển đổi dãy số từ chuỗi thành mảng số
-    const array = arrayString.split(',').map(num => parseInt(num.trim())).sort((a, b) => a - b);
-    
-    let result;
-    
-    if (isNaN(searchValue)) {
-        document.getElementById('searchResult').textContent = 'Vui lòng nhập giá trị tìm kiếm hợp lệ.';
-        document.getElementById('searchSteps').textContent = '';
-        return;
-    }
-
-    if (searchMethod === 'linear') {
-        result = linearSearch(array, searchValue);
-    } else if (searchMethod === 'binary') {
-        result = binarySearch(array, searchValue);
-    }
-
-    if (result.index !== -1) {
-        document.getElementById('searchResult').textContent = `Giá trị ${searchValue} được tìm thấy tại chỉ số ${result.index}.`;
-    } else {
-        document.getElementById('searchResult').textContent = `Giá trị ${searchValue} không được tìm thấy.`;
-    }
-
-    // Hiển thị các bước tìm kiếm
-    document.getElementById('searchSteps').textContent = result.steps.join('\n');
-}
-
-// Lắng nghe sự kiện nhấn nút tìm kiếm
-document.getElementById('searchButton').addEventListener('click', search);

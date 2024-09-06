@@ -1,15 +1,19 @@
-/* Video nền */
-#background-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-    filter: brightness(50%); /* Làm tối video nền để dễ đọc chữ */
+/* Đặt nền là một ảnh động GIF */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif'); /* URL của ảnh động online */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Container có độ trong suốt để thấy video phía sau */
+/* Container có độ trong suốt để thấy ảnh nền phía sau */
 .container {
     background-color: rgba(255, 255, 255, 0.8); /* Màu trắng với độ trong suốt 80% */
     padding: 40px;

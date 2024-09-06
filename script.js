@@ -1,36 +1,72 @@
-function linearSearch() {
-    const numbers = document.getElementById('numbers').value.split(',').map(Number);
-    const searchNumber = parseInt(document.getElementById('searchNumber').value);
-    let result = 'Không tìm thấy số.';
-
-    for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] === searchNumber) {
-            result = `Số ${searchNumber} được tìm thấy tại chỉ số ${i}.`;
-            break;
-        }
-    }
-
-    document.getElementById('result').textContent = result;
+// Hàm để sắp xếp mảng tăng dần (cho tìm kiếm nhị phân)
+function sortArray(arr) {
+    return arr.sort((a, b) => a - b);
 }
 
-function binarySearch() {
-    const numbers = document.getElementById('numbers').value.split(',').map(Number).sort((a, b) => a - b);
-    const searchNumber = parseInt(document.getElementById('searchNumber').value);
-    let low = 0;
-    let high = numbers.length - 1;
-    let result = 'Không tìm thấy số.';
+// Tìm kiếm tuyến tính
+function linearSearch(arr, target) {
+    let steps = "Steps: ";
+    for (let i = 0; i < arr.length; i++) {
+        steps += `Step ${i + 1}: Compare ${arr[i]} with ${target}<br>`;
+        if (arr[i] == target) {
+            return { found: true, index: i, steps: steps };
+        }
+    }
+    return { found: false, steps: steps };
+}
 
-    while (low <= high) {
-        const mid = Math.floor((low + high) / 2);
-        if (numbers[mid] === searchNumber) {
-            result = `Số ${searchNumber} được tìm thấy tại chỉ số ${mid} (sau khi sắp xếp).`;
-            break;
-        } else if (numbers[mid] < searchNumber) {
-            low = mid + 1;
+// Tìm kiếm nhị phân (cần mảng đã sắp xếp)
+function binarySearch(arr, target) {
+    let steps = "Steps: ";
+    let left = 0;
+    let right = arr.length - 1;
+    let stepCount = 1;
+
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        steps += `Step ${stepCount}: Compare ${arr[mid]} with ${target}<br>`;
+        stepCount++;
+
+        if (arr[mid] == target) {
+            return { found: true, index: mid, steps: steps };
+        } else if (arr[mid] < target) {
+            left = mid + 1;
         } else {
-            high = mid - 1;
+            right = mid - 1;
         }
     }
-
-    document.getElementById('result').textContent = result;
+    return { found: false, steps: steps };
 }
+
+// Lấy thông tin từ người dùng và xử lý tìm kiếm
+document.getElementById('linear-search').addEventListener('click', function() {
+    const numbers = document.getElementById('numbers').value.split(',').map(Number);
+    const target = Number(document.getElementById('target').value);
+
+    const result = linearSearch(numbers, target);
+
+    if (result.found) {
+        document.getElementById('result').innerHTML = `Linear Search: Found at index ${result.index}`;
+    } else {
+        document.getElementById('result').innerHTML = 'Linear Search: Not found';
+    }
+    document.getElementById('steps').innerHTML = result.steps;
+});
+
+document.getElementById('binary-search').addEventListener('click', function() {
+    let numbers = document.getElementById('numbers').value.split(',').map(Number);
+    const target = Number(document.getElementById('target').value);
+
+    // Sắp xếp mảng
+    numbers = sortArray(numbers);
+    document.getElementById('result').innerHTML = `Sorted array for Binary Search: [${numbers.join(', ')}]<br>`;
+
+    const result = binarySearch(numbers, target);
+
+    if (result.found) {
+        document.getElementById('result').innerHTML += `Binary Search: Found at index ${result.index}`;
+    } else {
+        document.getElementById('result').innerHTML += 'Binary Search: Not found';
+    }
+    document.getElementById('steps').innerHTML = result.steps;
+});
